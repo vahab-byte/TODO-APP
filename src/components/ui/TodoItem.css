@@ -1,0 +1,198 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  margin-bottom: 12px;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.todo-item:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.todo-item.completed {
+  opacity: 0.6;
+  background: rgba(248, 250, 252, 0.5);
+  box-shadow: none;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.priority-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+}
+
+.priority-indicator.low { background-color: #10b981; }
+.priority-indicator.medium { background-color: #f59e0b; }
+.priority-indicator.high { background-color: #ef4444; }
+
+.todo-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1;
+}
+
+.checkbox {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 2px solid #cbd5e1;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: white;
+}
+
+.checkbox:hover {
+  border-color: #6366f1;
+  transform: scale(1.05);
+}
+
+.checkbox.checked {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-color: transparent;
+}
+
+.todo-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.todo-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #0f172a;
+  cursor: pointer;
+  word-break: break-word;
+  transition: color 0.2s;
+  line-height: 1.4;
+}
+
+.todo-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #64748b;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.category-badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.category-badge.personal { background: #e0e7ff; color: #4f46e5; }
+.category-badge.work { background: #fef3c7; color: #d97706; }
+.category-badge.health { background: #d1fae5; color: #059669; }
+.category-badge.study { background: #fae8ff; color: #c026d3; }
+
+.due-date {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.due-date.text-red {
+  color: #ef4444;
+  background: #fee2e2;
+}
+
+.todo-item.overdue {
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.05);
+}
+
+.dot-separator {
+  color: #cbd5e1;
+}
+
+.edit-input {
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: #0f172a;
+  padding: 8px 12px;
+  border: 2px solid #6366f1;
+  border-radius: 8px;
+  outline: none;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.todo-actions {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.todo-item:hover .todo-actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.action-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.action-btn.edit:hover { color: #3b82f6; border-color: #bfdbfe; }
+.action-btn.delete:hover { color: #ef4444; background: #fee2e2; border-color: #fca5a5; }
+.action-btn.cancel:hover { color: #0f172a; }
+
+@media (max-width: 640px) {
+  .todo-actions {
+    opacity: 1;
+    transform: none;
+  }
+}
